@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GURJEET'S NCLEX RN & PN Dose Calc. Master Guide</title>
+  <title>PBX-0008 NCLEX RN & PN Dose Calc. Master Guide</title>
   <style>
+
     :root {
       --bg: #f5f8fc;
       --card: #ffffff;
@@ -12,6 +13,7 @@
       --muted: #5b6472;
       --line: #d8e2ef;
       --accent: #0f6fb5;
+      --accent-strong: #144b9a;
       --accent-2: #e8f3ff;
       --good: #0f766e;
       --warn: #9a3412;
@@ -19,6 +21,8 @@
       --shadow: 0 14px 40px rgba(15, 39, 73, 0.08);
       --radius: 18px;
       --radius-sm: 12px;
+      --sidebar-width: 280px;
+      --mobile-topbar-height: 64px;
     }
 
     * { box-sizing: border-box; }
@@ -29,12 +33,89 @@
       background: linear-gradient(180deg, #eef5fc 0%, #f8fbff 100%);
       color: var(--ink);
       line-height: 1.6;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body.nav-open {
+      overflow: hidden;
+    }
+
+    a, button, input, select, summary {
+      -webkit-tap-highlight-color: transparent;
     }
 
     .page {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
       min-height: 100vh;
+    }
+
+    .mobile-topbar {
+      display: none;
+      position: sticky;
+      top: 0;
+      z-index: 45;
+      height: var(--mobile-topbar-height);
+      background: rgba(15, 31, 51, 0.95);
+      color: #fff;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 10px 14px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .mobile-brand {
+      min-width: 0;
+    }
+
+    .mobile-brand strong {
+      display: block;
+      font-size: 0.96rem;
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-brand span {
+      display: block;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.76);
+    }
+
+    .menu-toggle,
+    .mobile-dock a,
+    .mobile-dock button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      z-index: 39;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .sidebar-overlay.show {
+      display: block;
+      opacity: 1;
     }
 
     .sidebar {
@@ -45,8 +126,31 @@
       overflow-y: auto;
       background: #0f1f33;
       color: #fff;
-      padding: 24px 18px;
+      padding: 24px 18px 28px;
       border-right: 1px solid rgba(255,255,255,0.08);
+      scrollbar-width: thin;
+    }
+
+    .sidebar-top {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
     }
 
     .brand {
@@ -64,18 +168,24 @@
       margin-top: 6px;
     }
 
+    .desktop-brand {
+      display: block;
+    }
+
     .search-box {
       margin: 18px 0 20px;
     }
 
     .search-box input {
       width: 100%;
+      min-height: 48px;
       padding: 12px 14px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.18);
       background: rgba(255,255,255,0.08);
       color: #fff;
       outline: none;
+      font-size: 0.98rem;
     }
 
     .search-box input::placeholder { color: rgba(255,255,255,0.65); }
@@ -96,8 +206,8 @@
       display: block;
       color: rgba(255,255,255,0.92);
       text-decoration: none;
-      padding: 10px 12px;
-      border-radius: 10px;
+      padding: 12px 12px;
+      border-radius: 12px;
       font-size: 0.96rem;
       margin-bottom: 4px;
       transition: 0.2s ease;
@@ -120,11 +230,12 @@
     }
 
     .content {
-      padding: 30px 32px 64px;
+      min-width: 0;
+      padding: 30px 32px 96px;
     }
 
     .hero {
-      background: linear-gradient(135deg, #0f6fb5 0%, #144b9a 100%);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
       color: #fff;
       padding: 30px;
       border-radius: 26px;
@@ -134,8 +245,8 @@
 
     .hero h1 {
       margin: 0 0 10px;
-      font-size: 2.1rem;
-      line-height: 1.2;
+      font-size: clamp(1.85rem, 2.6vw, 2.5rem);
+      line-height: 1.15;
     }
 
     .hero p {
@@ -144,23 +255,33 @@
       color: rgba(255,255,255,0.92);
     }
 
-    .badge-row {
+    .badge-row,
+    .hero-actions {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
       margin-top: 14px;
     }
 
-    .badge {
+    .badge,
+    .hero-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      min-height: 42px;
       padding: 8px 12px;
       border-radius: 999px;
       font-size: 0.88rem;
       font-weight: 700;
       background: rgba(255,255,255,0.16);
       color: #fff;
+      text-decoration: none;
+    }
+
+    .hero-link:hover,
+    .hero-link:focus {
+      background: rgba(255,255,255,0.24);
+      outline: none;
     }
 
     .grid-2, .grid-3, .grid-4 {
@@ -174,12 +295,14 @@
 
     .section {
       margin-top: 28px;
+      scroll-margin-top: 84px;
     }
 
     .section h2 {
       margin: 0 0 8px;
-      font-size: 1.6rem;
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
       color: #10233f;
+      line-height: 1.25;
     }
 
     .section-intro {
@@ -188,18 +311,25 @@
       max-width: 980px;
     }
 
-    .card {
+    .card,
+    .practice-item,
+    .calc-panel,
+    details {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 20px;
       box-shadow: var(--shadow);
+      min-width: 0;
     }
 
-    .card h3 {
+    .card h3,
+    .practice-item h3,
+    .calc-panel h3 {
       margin-top: 0;
       margin-bottom: 10px;
-      font-size: 1.16rem;
+      font-size: 1.12rem;
+      line-height: 1.3;
       color: #113050;
     }
 
@@ -223,7 +353,9 @@
       font-family: "Courier New", monospace;
       overflow-x: auto;
       margin: 12px 0;
-      font-size: 0.97rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      -webkit-overflow-scrolling: touch;
     }
 
     .steps {
@@ -231,7 +363,8 @@
       padding-left: 20px;
     }
 
-    .steps li { margin-bottom: 8px; }
+    .steps li,
+    .mini-list li { margin-bottom: 8px; }
 
     .example {
       margin-top: 14px;
@@ -271,11 +404,6 @@
     }
 
     details {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px 16px;
-      box-shadow: var(--shadow);
       margin-bottom: 14px;
     }
 
@@ -283,14 +411,27 @@
       cursor: pointer;
       font-weight: 800;
       color: #10233f;
+      list-style: none;
+      padding-right: 26px;
+      position: relative;
     }
 
-    .practice-item {
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: var(--shadow);
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.15rem;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    details[open] summary::after {
+      content: "–";
     }
 
     .practice-item button,
@@ -300,17 +441,22 @@
       border: none;
       background: var(--accent);
       color: #fff;
-      padding: 10px 14px;
+      padding: 12px 14px;
       border-radius: 12px;
       font-weight: 700;
       transition: transform 0.15s ease, opacity 0.15s ease;
+      min-height: 46px;
     }
 
     .practice-item button:hover,
     .calc-panel button:hover,
-    .top-btn:hover {
+    .top-btn:hover,
+    .practice-item button:focus,
+    .calc-panel button:focus,
+    .top-btn:focus {
       transform: translateY(-1px);
       opacity: 0.95;
+      outline: none;
     }
 
     .answer {
@@ -323,16 +469,6 @@
     }
 
     .answer.show { display: block; }
-
-    .calc-panel {
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .calc-panel h3 { margin-top: 0; }
 
     .calc-grid {
       display: grid;
@@ -351,11 +487,19 @@
     .calc-panel input,
     .calc-panel select {
       width: 100%;
+      min-height: 48px;
       padding: 10px 12px;
       border-radius: 12px;
       border: 1px solid #cddbeb;
       font-size: 0.98rem;
       outline: none;
+      background: #fff;
+    }
+
+    .calc-panel input:focus,
+    .calc-panel select:focus {
+      border-color: #8ab6df;
+      box-shadow: 0 0 0 3px rgba(15,111,181,0.12);
     }
 
     .result {
@@ -375,6 +519,7 @@
       box-shadow: var(--shadow);
       border: 1px solid var(--line);
       background: #fff;
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
@@ -399,9 +544,41 @@
 
     .sticky-top {
       position: fixed;
-      right: 20px;
-      bottom: 20px;
+      right: 18px;
+      bottom: 18px;
       z-index: 20;
+    }
+
+    .top-btn {
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-dock {
+      display: none;
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 25;
+      background: rgba(15, 31, 51, 0.95);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 8px;
+      box-shadow: 0 18px 40px rgba(15, 39, 73, 0.22);
+      backdrop-filter: blur(10px);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .mobile-dock a,
+    .mobile-dock button {
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 10px 8px;
+      min-height: 44px;
+      text-decoration: none;
     }
 
     .muted { color: var(--muted); }
@@ -410,35 +587,175 @@
 
     @media (max-width: 1100px) {
       .page { grid-template-columns: 1fr; }
+      .mobile-topbar { display: flex; }
       .sidebar {
-        position: relative;
-        height: auto;
-        overflow: visible;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: min(86vw, 340px);
+        max-width: 340px;
+        z-index: 40;
+        transform: translateX(-104%);
+        transition: transform 0.25s ease;
+        box-shadow: 0 18px 40px rgba(15, 39, 73, 0.24);
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .sidebar-top {
+        display: flex;
+      }
+      .desktop-brand {
+        display: none;
+      }
+      .content {
+        padding: 18px 18px 96px;
       }
       .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sticky-top { bottom: 82px; }
+      .mobile-dock { display: grid; }
     }
 
     @media (max-width: 780px) {
-      .content { padding: 18px; }
-      .hero { padding: 22px; }
-      .hero h1 { font-size: 1.7rem; }
-      .grid-2, .grid-3, .grid-4, .calc-grid { grid-template-columns: 1fr; }
-      table { min-width: 620px; }
+      .content {
+        padding: 14px 14px 100px;
+      }
+      .hero {
+        padding: 22px 18px;
+        border-radius: 22px;
+      }
+      .badge-row,
+      .hero-actions {
+        gap: 8px;
+      }
+      .badge,
+      .hero-link {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+      }
+      .grid-2, .grid-3, .grid-4, .calc-grid {
+        grid-template-columns: 1fr;
+      }
+      .card,
+      .practice-item,
+      .calc-panel,
+      details {
+        padding: 16px;
+        border-radius: 16px;
+      }
+      .practice-item button,
+      .calc-panel button {
+        width: 100%;
+      }
+      .formula {
+        font-size: 0.9rem;
+      }
+      .table-wrap {
+        overflow: visible;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+      }
+      table,
+      tbody,
+      tr,
+      td {
+        display: block;
+        width: 100%;
+        min-width: 0;
+      }
+      thead {
+        display: none;
+      }
+      tr {
+        margin-bottom: 12px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+      td {
+        display: grid;
+        grid-template-columns: minmax(86px, 110px) 1fr;
+        gap: 10px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      td:last-child {
+        border-bottom: none;
+      }
+      td::before {
+        content: attr(data-label);
+        font-weight: 800;
+        color: #10233f;
+      }
+      tr:nth-child(even) td {
+        background: #fff;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .mobile-topbar {
+        padding: 10px 12px;
+      }
+      .hero h1 {
+        font-size: 1.55rem;
+      }
+      .section h2 {
+        font-size: 1.28rem;
+      }
+      .mobile-dock {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+      .mobile-dock a,
+      .mobile-dock button {
+        font-size: 0.76rem;
+      }
     }
 
     @media print {
-      .sidebar, .sticky-top, button { display: none !important; }
+      .mobile-topbar,
+      .sidebar,
+      .sidebar-overlay,
+      .mobile-dock,
+      .sticky-top,
+      button {
+        display: none !important;
+      }
       .page { display: block; }
       .content { padding: 0; }
       .card, .practice-item, details, .calc-panel, .hero { box-shadow: none; }
       body { background: #fff; }
     }
+
   </style>
 </head>
 <body>
+  <div class="mobile-topbar">
+    <button class="menu-toggle" type="button" onclick="toggleSidebar()" aria-label="Open menu">☰</button>
+    <div class="mobile-brand">
+      <strong>NCLEX Dose Calculations</strong>
+      <span>RN + PN Study Page</span>
+    </div>
+    <a class="menu-toggle" href="#calculators" aria-label="Jump to calculators">Calc</a>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()" aria-hidden="true"></div>
+
   <div class="page">
-    <aside class="sidebar">
-      <div class="brand">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="brand" style="margin-bottom:0;">
+          NCLEX Dose Calculations
+          <small>RN + PN Study Page</small>
+        </div>
+        <button class="sidebar-close" type="button" onclick="closeSidebar()" aria-label="Close menu">✕</button>
+      </div>
+      <div class="brand desktop-brand">
         NCLEX Dose Calculations
         <small>RN + PN Study Page</small>
       </div>
@@ -469,7 +786,7 @@
 
     <main class="content">
       <section class="hero searchable">
-        <h1>GURJEET'S Master NCLEX RN &amp; PN Dose Calculations</h1>
+        <h1>PBX-0008's Master NCLEX RN &amp; PN Dose Calculations</h1>
         <p>
           This page teaches the major medication calculation types commonly tested in nursing school and used for NCLEX-style questions, including tablets, liquids, weight-based dosing, safe ranges, intravenous infusions, gravity flow rates, reconstitution, titration drips, unit-based infusions, and concentration problems.
         </p>
@@ -481,6 +798,12 @@
           <span class="badge">Worked examples</span>
           <span class="badge">Interactive calculators</span>
           <span class="badge">RN + PN friendly</span>
+        </div>
+        <div class="hero-actions">
+          <a class="hero-link" href="#foundation">Start learning</a>
+          <a class="hero-link" href="#calculators">Try calculators</a>
+          <a class="hero-link" href="#practice">Practice questions</a>
+          <a class="hero-link" href="#examday">Exam tips</a>
         </div>
       </section>
 
@@ -828,54 +1151,54 @@
             </thead>
             <tbody>
               <tr>
-                <td>Weight</td>
-                <td>1 kg = 2.2 lb</td>
-                <td>Needed for mg/kg/dose and mg/kg/day problems</td>
+                <td data-label="Type">Weight</td>
+                <td data-label="Conversion / Meaning">1 kg = 2.2 lb</td>
+                <td data-label="Use in calculation">Needed for mg/kg/dose and mg/kg/day problems</td>
               </tr>
-              <tr>
-                <td>Mass</td>
-                <td>1 g = 1000 mg</td>
-                <td>Convert grams to milligrams</td>
+<tr>
+                <td data-label="Type">Mass</td>
+                <td data-label="Conversion / Meaning">1 g = 1000 mg</td>
+                <td data-label="Use in calculation">Convert grams to milligrams</td>
               </tr>
-              <tr>
-                <td>Mass</td>
-                <td>1 mg = 1000 mcg</td>
-                <td>Needed in titration drips and some pediatric doses</td>
+<tr>
+                <td data-label="Type">Mass</td>
+                <td data-label="Conversion / Meaning">1 mg = 1000 mcg</td>
+                <td data-label="Use in calculation">Needed in titration drips and some pediatric doses</td>
               </tr>
-              <tr>
-                <td>Volume</td>
-                <td>1 L = 1000 mL</td>
-                <td>Common in fluid and IV questions</td>
+<tr>
+                <td data-label="Type">Volume</td>
+                <td data-label="Conversion / Meaning">1 L = 1000 mL</td>
+                <td data-label="Use in calculation">Common in fluid and IV questions</td>
               </tr>
-              <tr>
-                <td>Household</td>
-                <td>1 tsp = 5 mL</td>
-                <td>Oral liquid conversions</td>
+<tr>
+                <td data-label="Type">Household</td>
+                <td data-label="Conversion / Meaning">1 tsp = 5 mL</td>
+                <td data-label="Use in calculation">Oral liquid conversions</td>
               </tr>
-              <tr>
-                <td>Household</td>
-                <td>1 tbsp = 15 mL</td>
-                <td>Oral liquid conversions</td>
+<tr>
+                <td data-label="Type">Household</td>
+                <td data-label="Conversion / Meaning">1 tbsp = 15 mL</td>
+                <td data-label="Use in calculation">Oral liquid conversions</td>
               </tr>
-              <tr>
-                <td>Time</td>
-                <td>q4h = every 4 hours</td>
-                <td>6 doses per day</td>
+<tr>
+                <td data-label="Type">Time</td>
+                <td data-label="Conversion / Meaning">q4h = every 4 hours</td>
+                <td data-label="Use in calculation">6 doses per day</td>
               </tr>
-              <tr>
-                <td>Time</td>
-                <td>q6h = every 6 hours</td>
-                <td>4 doses per day</td>
+<tr>
+                <td data-label="Type">Time</td>
+                <td data-label="Conversion / Meaning">q6h = every 6 hours</td>
+                <td data-label="Use in calculation">4 doses per day</td>
               </tr>
-              <tr>
-                <td>Time</td>
-                <td>q8h = every 8 hours</td>
-                <td>3 doses per day</td>
+<tr>
+                <td data-label="Type">Time</td>
+                <td data-label="Conversion / Meaning">q8h = every 8 hours</td>
+                <td data-label="Use in calculation">3 doses per day</td>
               </tr>
-              <tr>
-                <td>Time</td>
-                <td>q12h = every 12 hours</td>
-                <td>2 doses per day</td>
+<tr>
+                <td data-label="Type">Time</td>
+                <td data-label="Conversion / Meaning">q12h = every 12 hours</td>
+                <td data-label="Use in calculation">2 doses per day</td>
               </tr>
             </tbody>
           </table>
@@ -1164,6 +1487,14 @@
     <button class="top-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Top</button>
   </div>
 
+  <nav class="mobile-dock" aria-label="Quick mobile actions">
+    <button type="button" onclick="toggleSidebar()">Menu</button>
+    <a href="#foundation">Learn</a>
+    <a href="#calculators">Calc</a>
+    <a href="#practice">Practice</a>
+  </nav>
+
+  
   <script>
     function safeNumber(value) {
       const n = parseFloat(value);
@@ -1174,13 +1505,29 @@
       return Number(Math.round(num + 'e' + decimals) + 'e-' + decimals);
     }
 
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const isOpen = sidebar.classList.toggle('open');
+      overlay.classList.toggle('show', isOpen);
+      document.body.classList.toggle('nav-open', isOpen);
+    }
+
+    function closeSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      sidebar.classList.remove('open');
+      overlay.classList.remove('show');
+      document.body.classList.remove('nav-open');
+    }
+
     function calcDHQ() {
       const desired = safeNumber(document.getElementById('desired').value);
       const have = safeNumber(document.getElementById('have').value);
       const quantity = safeNumber(document.getElementById('quantity').value);
       const unit = document.getElementById('quantityUnit').value.trim() || 'units';
       const result = document.getElementById('dhqResult');
-      if (!desired || !have || !quantity) {
+      if (desired === null || have === null || quantity === null || have === 0) {
         result.textContent = 'Enter desired dose, dose on hand, and quantity.';
         return;
       }
@@ -1192,7 +1539,7 @@
       const volume = safeNumber(document.getElementById('ivVolume').value);
       const hours = safeNumber(document.getElementById('ivHours').value);
       const result = document.getElementById('mlhrResult');
-      if (!volume || !hours) {
+      if (volume === null || hours === null || hours === 0) {
         result.textContent = 'Enter both volume and time.';
         return;
       }
@@ -1206,7 +1553,7 @@
       const minutes = safeNumber(document.getElementById('gttMinutes').value) || 0;
       const totalMinutes = (hours * 60) + minutes;
       const result = document.getElementById('gttResult');
-      if (!volume || !factor || !totalMinutes) {
+      if (volume === null || factor === null || totalMinutes <= 0) {
         result.textContent = 'Enter volume, drop factor, and a valid infusion time.';
         return;
       }
@@ -1218,7 +1565,7 @@
       const kg = safeNumber(document.getElementById('kgWeight').value);
       const dose = safeNumber(document.getElementById('mgkg').value);
       const result = document.getElementById('mgkgResult');
-      if (!kg || !dose) {
+      if (kg === null || dose === null) {
         result.textContent = 'Enter weight and ordered mg/kg/dose.';
         return;
       }
@@ -1231,7 +1578,7 @@
       const bagDrug = safeNumber(document.getElementById('bagDrug').value);
       const bagVolume = safeNumber(document.getElementById('bagVolume').value);
       const result = document.getElementById('titrationResult');
-      if (!wt || !dose || !bagDrug || !bagVolume) {
+      if (wt === null || dose === null || bagDrug === null || bagVolume === null || bagVolume === 0) {
         result.textContent = 'Enter all four values.';
         return;
       }
@@ -1247,7 +1594,7 @@
       const high = safeNumber(document.getElementById('safeHigh').value);
       const ordered = safeNumber(document.getElementById('orderedDose').value);
       const result = document.getElementById('safeResult');
-      if (!kg || !low || !high || !ordered) {
+      if (kg === null || low === null || high === null || ordered === null) {
         result.textContent = 'Enter weight, low dose, high dose, and ordered dose.';
         return;
       }
@@ -1262,7 +1609,8 @@
       el.classList.toggle('show');
     }
 
-    document.getElementById('searchInput').addEventListener('input', function () {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function () {
       const term = this.value.trim().toLowerCase();
       const blocks = document.querySelectorAll('.searchable, .card, .practice-item, .calc-panel, details');
       blocks.forEach(block => {
@@ -1270,6 +1618,27 @@
         block.classList.toggle('hidden-by-search', term && !text.includes(term));
       });
     });
+
+    document.querySelectorAll('.sidebar a, .mobile-dock a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1100) {
+          closeSidebar();
+        }
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1100) {
+        closeSidebar();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeSidebar();
+      }
+    });
   </script>
+
 </body>
 </html>
