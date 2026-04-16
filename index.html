@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mobile-friendly NCLEX RN and NCLEX PN dose calculations study guide with formulas, examples, calculators, and practice questions." />
+  <title>NCLEX RN &amp; PN Dose Calculations</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="mobile-bar">
+    <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">☰ Topics</button>
+    <div class="mobile-title">NCLEX Dose Calculations</div>
+  </header>
+
+  <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
+
+  <div class="page">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        NCLEX Dose Calculations
+        <small>RN + PN Study Page</small>
+      </div>
+
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Search topics, examples, formulas..." aria-label="Search topics" />
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Jump to</div>
+        <a href="#foundation">1. Foundations</a>
+        <a href="#methods">2. Solving Methods</a>
+        <a href="#oral">3. Oral & Liquid Doses</a>
+        <a href="#weight">4. Weight-Based & Pediatric</a>
+        <a href="#iv">5. IV Pump, Gravity & Time</a>
+        <a href="#advanced">6. Titration, Reconstitution & Advanced</a>
+        <a href="#conversions">7. High-Yield Conversions</a>
+        <a href="#calculators">8. Built-in Calculators</a>
+        <a href="#practice">9. Practice Questions</a>
+        <a href="#examday">10. Exam-Day Strategy</a>
+      </div>
+
+      <div class="tip">
+        <strong>Golden habit:</strong><br />
+        Always label units and cancel them as you solve. Most NCLEX dose errors come from skipping unit checks.
+      </div>
+    </aside>
+
+    <main class="content">
+      <section class="hero searchable">
+        <h1>Master NCLEX RN &amp; NCLEX PN Dose Calculations</h1>
+        <p>
+          This page teaches the major medication calculation types commonly tested in nursing school and used for NCLEX-style questions, including tablets, liquids, weight-based dosing, safe ranges, intravenous infusions, gravity flow rates, reconstitution, titration drips, unit-based infusions, and concentration problems.
+        </p>
+        <p>
+          Each section shows the formula, a step-by-step method, a fully worked example, and practical safety reminders. Use the built-in calculators and practice questions to check your understanding.
+        </p>
+        <div class="badge-row">
+          <span class="badge">Step-by-step teaching</span>
+          <span class="badge">Worked examples</span>
+          <span class="badge">Interactive calculators</span>
+          <span class="badge">RN + PN friendly</span>
+        </div>
+      </section>
+
+      <section id="foundation" class="section searchable">
+        <h2>1. Foundations You Must Know First</h2>
+        <p class="section-intro">
+          Before you solve any problem, use the same safety framework. This keeps you from rushing into the math and missing a dangerous order.
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Five questions to ask before every calculation</h3>
+            <ol class="steps">
+              <li><strong>What is ordered?</strong> Identify the exact dose, route, and frequency.</li>
+              <li><strong>What is available?</strong> Find the stock strength on the label.</li>
+              <li><strong>What unit do I want?</strong> Tablets, capsules, milliliters, units, drops per minute, or milliliters per hour.</li>
+              <li><strong>Does the unit make clinical sense?</strong> Example: insulin is usually given in units, not ordinary milliliters.</li>
+              <li><strong>Do I need a safety check?</strong> Weight-based limits, safe dose range, rounding rules, or a second nurse check.</li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <h3>Rounding rules to memorize</h3>
+            <ul class="mini-list">
+              <li>Tablets: give the amount your setting allows, often whole or half tablet if scored and appropriate.</li>
+              <li>Oral liquids: many nursing problems round to the nearest tenth when needed.</li>
+              <li>Intravenous pump rates: often nearest whole number unless policy says otherwise.</li>
+              <li>Gravity flow rate in drops/minute: always round to a whole drop.</li>
+              <li>Do not put a trailing zero: write 5 mg, not 5.0 mg.</li>
+              <li>Use a leading zero for values less than 1: write 0.5 mL, not .5 mL.</li>
+            </ul>
+            <div class="callout warn" style="margin-top:12px;">
+              Never round in the middle of the problem unless the question explicitly tells you to. Round only at the end.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="methods" class="section searchable">
+        <h2>2. Three Ways to Solve the Same Problem</h2>
+        <p class="section-intro">
+          NCLEX questions can be solved with any correct method. Learn one primary method well, then use another method to check yourself.
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <span class="pill">Most common</span>
+            <h3>Formula method</h3>
+            <div class="formula">Dose to give = (Desired ÷ Have) × Quantity</div>
+            <p><strong>Use when:</strong> The label gives one dose and one quantity, like 250 mg in 5 mL.</p>
+            <div class="example">
+              <strong>Example:</strong> Order = 500 mg. Available = 250 mg/5 mL.<br />
+              (500 ÷ 250) × 5 = 2 × 5 = <strong>10 mL</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Excellent for checks</span>
+            <h3>Ratio and proportion</h3>
+            <div class="formula">250 mg : 5 mL = 500 mg : x mL</div>
+            <p><strong>Use when:</strong> You like setting equal ratios and cross-multiplying.</p>
+            <div class="example">
+              250x = 2500 → x = <strong>10 mL</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Safest for complex IV math</span>
+            <h3>Dimensional analysis</h3>
+            <div class="formula">500 mg × 5 mL / 250 mg = 10 mL</div>
+            <p><strong>Use when:</strong> The problem involves multiple conversions such as pounds to kilograms or micrograms to milligrams.</p>
+            <div class="callout good">
+              Best habit for advanced calculations: line up units so unwanted units cancel out.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="oral" class="section searchable">
+        <h2>3. Oral, Liquid, and Basic Dose Calculations</h2>
+        <p class="section-intro">
+          These are the core medication problems most students see first. Master these before moving to pediatric and intravenous questions.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="pill">Tablets / Capsules</span>
+            <h3>Tablet calculation</h3>
+            <div class="formula">Tablets to give = Desired dose ÷ Dose on hand</div>
+            <ol class="steps">
+              <li>Read the ordered dose.</li>
+              <li>Read how many milligrams are in one tablet.</li>
+              <li>Divide ordered dose by dose per tablet.</li>
+            </ol>
+            <div class="example">
+              <strong>Example:</strong> Order = 500 mg. Available = 250 mg/tablet.<br />
+              500 ÷ 250 = <strong>2 tablets</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">mL per dose</span>
+            <h3>Oral liquid calculation</h3>
+            <div class="formula">mL to give = (Desired ÷ Have) × Quantity</div>
+            <ol class="steps">
+              <li>Match the ordered unit to the stock unit.</li>
+              <li>Use the concentration on the bottle label.</li>
+              <li>Solve for milliliters.</li>
+            </ol>
+            <div class="example">
+              <strong>Example:</strong> Order = 375 mg. Available = 250 mg/5 mL.<br />
+              (375 ÷ 250) × 5 = 1.5 × 5 = <strong>7.5 mL</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Units</span>
+            <h3>Unit-based medications</h3>
+            <div class="formula">Volume = Ordered units ÷ Units per mL</div>
+            <p>Common in insulin, heparin, and some vaccines or biologics.</p>
+            <div class="example">
+              <strong>Example:</strong> U-100 insulin = 100 units/mL. Order = 8 units.<br />
+              8 ÷ 100 = <strong>0.08 mL</strong><br />
+              <span class="muted">Clinical note: insulin is commonly measured and administered by units on an insulin syringe or pen, not by drawing up ordinary milliliters.</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Concentration</span>
+            <h3>Percent-strength and mg/mL problems</h3>
+            <div class="formula">1% = 1 g / 100 mL = 1000 mg / 100 mL = 10 mg/mL</div>
+            <ol class="steps">
+              <li>Convert percent to mg/mL.</li>
+              <li>Then solve like any liquid medication problem.</li>
+            </ol>
+            <div class="example">
+              <strong>Example:</strong> Order = 25 mg. Available = 1% solution.<br />
+              1% = 10 mg/mL, so 25 mg ÷ 10 mg/mL = <strong>2.5 mL</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="weight" class="section searchable">
+        <h2>4. Weight-Based, Daily-Dose, and Pediatric Safety Calculations</h2>
+        <p class="section-intro">
+          These are high-yield because the math is simple but the safety risk is high. Do not skip kilogram conversion or safe-range checking.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="pill">mg/kg/dose</span>
+            <h3>Weight-based dose</h3>
+            <div class="formula">Ordered dose = Weight in kg × Prescribed mg/kg/dose</div>
+            <ol class="steps">
+              <li>Convert pounds to kilograms if needed: kg = lb ÷ 2.2.</li>
+              <li>Multiply the weight in kilograms by the ordered mg/kg/dose.</li>
+              <li>If needed, convert the final milligrams to milliliters using the stock concentration.</li>
+            </ol>
+            <div class="example">
+              <strong>Example:</strong> Child weighs 18 kg. Order = 15 mg/kg/dose.<br />
+              18 × 15 = <strong>270 mg per dose</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">mg/kg/day</span>
+            <h3>Daily dose divided into multiple doses</h3>
+            <div class="formula">Daily mg = Weight in kg × mg/kg/day → Then divide by number of doses</div>
+            <ol class="steps">
+              <li>Find the total daily amount.</li>
+              <li>Read the schedule: every 8 hours means 3 doses/day, every 6 hours means 4 doses/day.</li>
+              <li>Divide the total daily dose by doses per day.</li>
+            </ol>
+            <div class="example">
+              <strong>Example:</strong> Weight = 30 kg. Prescription = 60 mg/kg/day in 3 divided doses.<br />
+              Daily amount = 30 × 60 = 1800 mg/day.<br />
+              1800 ÷ 3 = <strong>600 mg per dose</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Safe range</span>
+            <h3>Safe dose range check</h3>
+            <div class="formula">Minimum safe dose = Weight × Low end &nbsp;&nbsp;|&nbsp;&nbsp; Maximum safe dose = Weight × High end</div>
+            <ol class="steps">
+              <li>Compute the minimum safe dose.</li>
+              <li>Compute the maximum safe dose.</li>
+              <li>Compare the ordered dose with the range.</li>
+            </ol>
+            <div class="example">
+              <strong>Example:</strong> Weight = 22 kg. Safe range = 10 to 15 mg/kg/dose. Ordered = 400 mg.<br />
+              Minimum = 22 × 10 = 220 mg.<br />
+              Maximum = 22 × 15 = 330 mg.<br />
+              400 mg is <strong>outside the safe range</strong>.
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Pediatric alert</span>
+            <h3>Common pediatric mistake pattern</h3>
+            <ul class="mini-list">
+              <li>Using pounds instead of kilograms</li>
+              <li>Forgetting to divide a daily dose into each dose</li>
+              <li>Converting to milliliters before calculating the correct milligram dose</li>
+              <li>Skipping the safe-dose range check</li>
+            </ul>
+            <div class="callout warn" style="margin-top:12px;">
+              For pediatric questions, do the clinical safety check even if the problem only asks for a number.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="iv" class="section searchable">
+        <h2>5. Intravenous Pump, Gravity Flow, and Infusion Time</h2>
+        <p class="section-intro">
+          These are especially important for NCLEX-style medication administration questions. Keep straight whether the problem wants milliliters per hour, drops per minute, or time remaining.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <span class="pill">IV Pump</span>
+            <h3>Milliliters per hour (mL/hr)</h3>
+            <div class="formula">mL/hr = Total volume in mL ÷ Time in hours</div>
+            <div class="example">
+              <strong>Example:</strong> Infuse 1000 mL over 8 hours.<br />
+              1000 ÷ 8 = <strong>125 mL/hr</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Gravity tubing</span>
+            <h3>Drops per minute (gtt/min)</h3>
+            <div class="formula">gtt/min = (mL × drop factor gtt/mL) ÷ time in minutes</div>
+            <div class="example">
+              <strong>Example:</strong> 500 mL over 4 hr, tubing = 15 gtt/mL.<br />
+              Time = 4 hr = 240 min.<br />
+              (500 × 15) ÷ 240 = 31.25 → <strong>31 gtt/min</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Time</span>
+            <h3>How long will it run?</h3>
+            <div class="formula">Time in hours = Volume in mL ÷ Rate in mL/hr</div>
+            <div class="example">
+              <strong>Example:</strong> 250 mL at 100 mL/hr.<br />
+              250 ÷ 100 = 2.5 hr = <strong>2 hr 30 min</strong>
+            </div>
+          </div>
+        </div>
+
+        <details>
+          <summary>How to decide whether to use mL/hr or gtt/min</summary>
+          <p>
+            Use <strong>mL/hr</strong> when the problem involves an infusion pump. Use <strong>gtt/min</strong> when the problem gives a drop factor such as 10 gtt/mL, 15 gtt/mL, 20 gtt/mL, or 60 gtt/mL and the fluid is being regulated by gravity tubing.
+          </p>
+        </details>
+
+        <details>
+          <summary>Macrodrip vs microdrip shortcut</summary>
+          <p>
+            Macrodrip tubing usually has a drop factor such as 10, 15, or 20 gtt/mL. Microdrip tubing is often 60 gtt/mL. Because 60 minutes = 1 hour, a microdrip setup often makes the number of gtt/min equal the number of mL/hr.
+          </p>
+        </details>
+      </section>
+
+      <section id="advanced" class="section searchable">
+        <h2>6. Reconstitution, Titration, Heparin, Insulin, and Other Advanced Problems</h2>
+        <p class="section-intro">
+          These are the calculations that scare many students, but they become much easier if you split them into ordered dose, concentration, and target unit.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="pill">Reconstitution</span>
+            <h3>Powdered medication after dilution</h3>
+            <div class="formula">mL to give = Ordered dose ÷ Reconstituted concentration</div>
+            <p>The key is to use the concentration <strong>after</strong> reconstitution, not the dry powder amount alone.</p>
+            <div class="example">
+              <strong>Example:</strong> Label says add 2.2 mL sterile water to yield 250 mg/mL. Order = 375 mg.<br />
+              375 ÷ 250 = <strong>1.5 mL</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">Units/hr</span>
+            <h3>Heparin or other unit-based infusion</h3>
+            <div class="formula">mL/hr = Ordered units/hr ÷ Units per mL</div>
+            <div class="example">
+              <strong>Example:</strong> 25,000 units in 500 mL. Order = 900 units/hr.<br />
+              Concentration = 25,000 ÷ 500 = 50 units/mL.<br />
+              900 ÷ 50 = <strong>18 mL/hr</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">mcg/kg/min</span>
+            <h3>Titration drip calculation</h3>
+            <div class="formula">mL/hr = (Ordered mcg/kg/min × kg × 60) ÷ Concentration in mcg/mL</div>
+            <ol class="steps">
+              <li>Calculate the client requirement in mcg/min.</li>
+              <li>Convert to mcg/hr by multiplying by 60.</li>
+              <li>Find the bag concentration in mcg/mL.</li>
+              <li>Divide mcg/hr by mcg/mL to get mL/hr.</li>
+            </ol>
+            <div class="example">
+              <strong>Example:</strong> Dopamine 5 mcg/kg/min for a 70 kg client. Bag = 400 mg in 250 mL.<br />
+              Step 1: 5 × 70 = 350 mcg/min.<br />
+              Step 2: 350 × 60 = 21,000 mcg/hr.<br />
+              Step 3: 400 mg = 400,000 mcg. 400,000 ÷ 250 = 1600 mcg/mL.<br />
+              Step 4: 21,000 ÷ 1600 = <strong>13.1 mL/hr</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="pill">BSA</span>
+            <h3>Body surface area dose</h3>
+            <div class="formula">Dose = Ordered mg/m² × BSA in m²</div>
+            <p>Seen in some advanced medication questions, especially oncology-style scenarios.</p>
+            <div class="example">
+              <strong>Example:</strong> Order = 400 mg/m². BSA = 1.6 m².<br />
+              400 × 1.6 = <strong>640 mg</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout warn" style="margin-top:16px;">
+          High-alert medications such as insulin, heparin, vasoactive drips, and pediatric doses deserve extra checking. In practice settings they often require an independent double-check according to facility policy.
+        </div>
+      </section>
+
+      <section id="conversions" class="section searchable">
+        <h2>7. High-Yield Conversions and Schedules</h2>
+        <p class="section-intro">
+          Memorize the conversions below. Many difficult-looking questions are really basic conversions hidden inside a medication problem.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Conversion / Meaning</th>
+                <th>Use in calculation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Weight</td>
+                <td>1 kg = 2.2 lb</td>
+                <td>Needed for mg/kg/dose and mg/kg/day problems</td>
+              </tr>
+              <tr>
+                <td>Mass</td>
+                <td>1 g = 1000 mg</td>
+                <td>Convert grams to milligrams</td>
+              </tr>
+              <tr>
+                <td>Mass</td>
+                <td>1 mg = 1000 mcg</td>
+                <td>Needed in titration drips and some pediatric doses</td>
+              </tr>
+              <tr>
+                <td>Volume</td>
+                <td>1 L = 1000 mL</td>
+                <td>Common in fluid and IV questions</td>
+              </tr>
+              <tr>
+                <td>Household</td>
+                <td>1 tsp = 5 mL</td>
+                <td>Oral liquid conversions</td>
+              </tr>
+              <tr>
+                <td>Household</td>
+                <td>1 tbsp = 15 mL</td>
+                <td>Oral liquid conversions</td>
+              </tr>
+              <tr>
+                <td>Time</td>
+                <td>q4h = every 4 hours</td>
+                <td>6 doses per day</td>
+              </tr>
+              <tr>
+                <td>Time</td>
+                <td>q6h = every 6 hours</td>
+                <td>4 doses per day</td>
+              </tr>
+              <tr>
+                <td>Time</td>
+                <td>q8h = every 8 hours</td>
+                <td>3 doses per day</td>
+              </tr>
+              <tr>
+                <td>Time</td>
+                <td>q12h = every 12 hours</td>
+                <td>2 doses per day</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="calculators" class="section searchable">
+        <h2>8. Built-in Calculators</h2>
+        <p class="section-intro">
+          Use these to practice your setup. They are learning tools, not clinical decision tools.
+        </p>
+
+        <div class="grid-2">
+          <div class="calc-panel">
+            <h3>Desired / Have / Quantity</h3>
+            <div class="calc-grid">
+              <div>
+                <label for="desired">Desired dose</label>
+                <input id="desired" type="number" step="any" placeholder="e.g. 375" />
+              </div>
+              <div>
+                <label for="have">Dose on hand</label>
+                <input id="have" type="number" step="any" placeholder="e.g. 250" />
+              </div>
+              <div>
+                <label for="quantity">Quantity</label>
+                <input id="quantity" type="number" step="any" placeholder="e.g. 5" />
+              </div>
+              <div>
+                <label for="quantityUnit">Quantity unit</label>
+                <input id="quantityUnit" type="text" placeholder="mL, tablet, capsule" />
+              </div>
+            </div>
+            <div style="margin-top:12px;">
+              <button onclick="calcDHQ()">Calculate</button>
+            </div>
+            <div class="result" id="dhqResult">Your result will appear here.</div>
+          </div>
+
+          <div class="calc-panel">
+            <h3>mL/hr Pump Rate</h3>
+            <div class="calc-grid">
+              <div>
+                <label for="ivVolume">Volume (mL)</label>
+                <input id="ivVolume" type="number" step="any" placeholder="e.g. 1000" />
+              </div>
+              <div>
+                <label for="ivHours">Time (hours)</label>
+                <input id="ivHours" type="number" step="any" placeholder="e.g. 8" />
+              </div>
+            </div>
+            <div style="margin-top:12px;">
+              <button onclick="calcMlHr()">Calculate</button>
+            </div>
+            <div class="result" id="mlhrResult">Your result will appear here.</div>
+          </div>
+
+          <div class="calc-panel">
+            <h3>Gravity Flow Rate (gtt/min)</h3>
+            <div class="calc-grid">
+              <div>
+                <label for="gttVolume">Volume (mL)</label>
+                <input id="gttVolume" type="number" step="any" placeholder="e.g. 500" />
+              </div>
+              <div>
+                <label for="dropFactor">Drop factor (gtt/mL)</label>
+                <input id="dropFactor" type="number" step="any" placeholder="e.g. 15" />
+              </div>
+              <div>
+                <label for="gttHours">Hours</label>
+                <input id="gttHours" type="number" step="any" placeholder="e.g. 4" />
+              </div>
+              <div>
+                <label for="gttMinutes">Extra minutes</label>
+                <input id="gttMinutes" type="number" step="any" placeholder="e.g. 0" />
+              </div>
+            </div>
+            <div style="margin-top:12px;">
+              <button onclick="calcGtt()">Calculate</button>
+            </div>
+            <div class="result" id="gttResult">Your result will appear here.</div>
+          </div>
+
+          <div class="calc-panel">
+            <h3>mg/kg Dose</h3>
+            <div class="calc-grid">
+              <div>
+                <label for="kgWeight">Weight (kg)</label>
+                <input id="kgWeight" type="number" step="any" placeholder="e.g. 18" />
+              </div>
+              <div>
+                <label for="mgkg">Ordered mg/kg/dose</label>
+                <input id="mgkg" type="number" step="any" placeholder="e.g. 15" />
+              </div>
+            </div>
+            <div style="margin-top:12px;">
+              <button onclick="calcMgKg()">Calculate</button>
+            </div>
+            <div class="result" id="mgkgResult">Your result will appear here.</div>
+          </div>
+
+          <div class="calc-panel">
+            <h3>mcg/kg/min to mL/hr</h3>
+            <div class="calc-grid">
+              <div>
+                <label for="tWt">Weight (kg)</label>
+                <input id="tWt" type="number" step="any" placeholder="e.g. 70" />
+              </div>
+              <div>
+                <label for="tDose">Ordered dose (mcg/kg/min)</label>
+                <input id="tDose" type="number" step="any" placeholder="e.g. 5" />
+              </div>
+              <div>
+                <label for="bagDrug">Drug in bag (mg)</label>
+                <input id="bagDrug" type="number" step="any" placeholder="e.g. 400" />
+              </div>
+              <div>
+                <label for="bagVolume">Bag volume (mL)</label>
+                <input id="bagVolume" type="number" step="any" placeholder="e.g. 250" />
+              </div>
+            </div>
+            <div style="margin-top:12px;">
+              <button onclick="calcTitration()">Calculate</button>
+            </div>
+            <div class="result" id="titrationResult">Your result will appear here.</div>
+          </div>
+
+          <div class="calc-panel">
+            <h3>Safe Dose Range</h3>
+            <div class="calc-grid">
+              <div>
+                <label for="safeKg">Weight (kg)</label>
+                <input id="safeKg" type="number" step="any" placeholder="e.g. 22" />
+              </div>
+              <div>
+                <label for="safeLow">Low safe dose (mg/kg/dose)</label>
+                <input id="safeLow" type="number" step="any" placeholder="e.g. 10" />
+              </div>
+              <div>
+                <label for="safeHigh">High safe dose (mg/kg/dose)</label>
+                <input id="safeHigh" type="number" step="any" placeholder="e.g. 15" />
+              </div>
+              <div>
+                <label for="orderedDose">Ordered dose (mg)</label>
+                <input id="orderedDose" type="number" step="any" placeholder="e.g. 400" />
+              </div>
+            </div>
+            <div style="margin-top:12px;">
+              <button onclick="calcSafeRange()">Calculate</button>
+            </div>
+            <div class="result" id="safeResult">Your result will appear here.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="practice" class="section searchable">
+        <h2>9. Practice Questions with Reveal Answers</h2>
+        <p class="section-intro">
+          Try the problem first on paper, then reveal the answer and compare your setup.
+        </p>
+        <div class="grid-2">
+          <div class="practice-item">
+            <h3>1. Tablet dose</h3>
+            <p>Order: 750 mg by mouth. Available: 250 mg/tablet. How many tablets will you administer?</p>
+            <button onclick="toggleAnswer('a1')">Show answer</button>
+            <div id="a1" class="answer">750 ÷ 250 = <strong>3 tablets</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>2. Oral liquid</h3>
+            <p>Order: 125 mg. Available: 250 mg/5 mL. How many milliliters will you administer?</p>
+            <button onclick="toggleAnswer('a2')">Show answer</button>
+            <div id="a2" class="answer">(125 ÷ 250) × 5 = <strong>2.5 mL</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>3. Pounds to kilograms</h3>
+            <p>A child weighs 44 lb. What is the weight in kilograms?</p>
+            <button onclick="toggleAnswer('a3')">Show answer</button>
+            <div id="a3" class="answer">44 ÷ 2.2 = <strong>20 kg</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>4. mg/kg/dose</h3>
+            <p>Order: 12 mg/kg/dose for a child weighing 25 kg. How many milligrams per dose?</p>
+            <button onclick="toggleAnswer('a4')">Show answer</button>
+            <div id="a4" class="answer">25 × 12 = <strong>300 mg/dose</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>5. mg/kg/day divided</h3>
+            <p>Prescription: 40 mg/kg/day in 2 divided doses. Weight: 30 kg. How many milligrams per dose?</p>
+            <button onclick="toggleAnswer('a5')">Show answer</button>
+            <div id="a5" class="answer">Daily dose = 40 × 30 = 1200 mg/day. 1200 ÷ 2 = <strong>600 mg/dose</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>6. Safe range</h3>
+            <p>Safe range is 5 to 8 mg/kg/dose. Child weighs 16 kg. Ordered dose is 100 mg. Is it safe?</p>
+            <button onclick="toggleAnswer('a6')">Show answer</button>
+            <div id="a6" class="answer">Range = 16 × 5 = 80 mg to 16 × 8 = 128 mg. <strong>100 mg is safe</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>7. IV pump</h3>
+            <p>Infuse 1500 mL over 12 hours. What is the pump rate?</p>
+            <button onclick="toggleAnswer('a7')">Show answer</button>
+            <div id="a7" class="answer">1500 ÷ 12 = <strong>125 mL/hr</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>8. Gravity flow rate</h3>
+            <p>Infuse 1000 mL over 8 hr using tubing with a drop factor of 15 gtt/mL. What is the flow rate in gtt/min?</p>
+            <button onclick="toggleAnswer('a8')">Show answer</button>
+            <div id="a8" class="answer">Time = 480 min. (1000 × 15) ÷ 480 = 31.25 → <strong>31 gtt/min</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>9. Time to infuse</h3>
+            <p>An IV contains 500 mL and runs at 125 mL/hr. How long will it take to infuse?</p>
+            <button onclick="toggleAnswer('a9')">Show answer</button>
+            <div id="a9" class="answer">500 ÷ 125 = <strong>4 hours</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>10. Reconstitution</h3>
+            <p>A vial yields 125 mg/mL after reconstitution. The order is for 250 mg. How many milliliters will you draw up?</p>
+            <button onclick="toggleAnswer('a10')">Show answer</button>
+            <div id="a10" class="answer">250 ÷ 125 = <strong>2 mL</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>11. Heparin infusion</h3>
+            <p>A bag contains 20,000 units in 500 mL. The prescription is 1000 units/hr. What is the rate in mL/hr?</p>
+            <button onclick="toggleAnswer('a11')">Show answer</button>
+            <div id="a11" class="answer">20,000 ÷ 500 = 40 units/mL. 1000 ÷ 40 = <strong>25 mL/hr</strong>.</div>
+          </div>
+
+          <div class="practice-item">
+            <h3>12. Titration drip</h3>
+            <p>A medication is ordered at 2 mcg/kg/min for a 50 kg client. The bag contains 200 mg in 250 mL. What is the rate in mL/hr?</p>
+            <button onclick="toggleAnswer('a12')">Show answer</button>
+            <div id="a12" class="answer">2 × 50 = 100 mcg/min. 100 × 60 = 6000 mcg/hr. 200 mg = 200,000 mcg. 200,000 ÷ 250 = 800 mcg/mL. 6000 ÷ 800 = <strong>7.5 mL/hr</strong>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="examday" class="section searchable">
+        <h2>10. Exam-Day Strategy</h2>
+        <p class="section-intro">
+          On test day, speed matters less than setting up the problem correctly. Use this checklist every time.
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>My 20-second checklist</h3>
+            <ol class="steps">
+              <li>Circle the ordered dose.</li>
+              <li>Box the stock concentration.</li>
+              <li>Underline the final unit asked for.</li>
+              <li>Convert pounds to kilograms first if needed.</li>
+              <li>Write the formula before touching the numbers.</li>
+              <li>Check whether the answer is realistic.</li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <h3>Quick reasonableness checks</h3>
+            <ul class="mini-list">
+              <li>If the ordered dose is larger than the stock dose, your liquid volume should usually be larger than the stock quantity.</li>
+              <li>If the ordered dose is half the stock dose, the volume should usually be about half the stock quantity.</li>
+              <li>If an IV is running for more hours, the hourly rate should get smaller.</li>
+              <li>If the drop factor is larger, the gtt/min should get larger for the same infusion.</li>
+              <li>If your pediatric dose looks adult-sized, recheck kilograms and safe range.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout good" style="margin-top:18px;">
+          Final memory trick: every calculation can be broken into three questions — what dose is needed, what concentration is available, and what unit must the final answer be reported in?
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="sticky-top">
+    <button class="top-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Top</button>
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
