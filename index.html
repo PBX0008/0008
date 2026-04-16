@@ -3,20 +3,441 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mobile-friendly NCLEX RN and NCLEX PN dose calculations study guide with formulas, examples, calculators, and practice questions." />
-  <title>NCLEX RN &amp; PN Dose Calculations</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <title>GURJEET'S NCLEX RN & PN Dose Calc. Master Guide</title>
+  <style>
+    :root {
+      --bg: #f5f8fc;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #5b6472;
+      --line: #d8e2ef;
+      --accent: #0f6fb5;
+      --accent-2: #e8f3ff;
+      --good: #0f766e;
+      --warn: #9a3412;
+      --bad: #b42318;
+      --shadow: 0 14px 40px rgba(15, 39, 73, 0.08);
+      --radius: 18px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eef5fc 0%, #f8fbff 100%);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .page {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      overflow-y: auto;
+      background: #0f1f33;
+      color: #fff;
+      padding: 24px 18px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .brand small {
+      display: block;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.86rem;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+
+    .search-box {
+      margin: 18px 0 20px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      outline: none;
+    }
+
+    .search-box input::placeholder { color: rgba(255,255,255,0.65); }
+
+    .nav-group {
+      margin-top: 14px;
+    }
+
+    .nav-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 8px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+      transition: 0.2s ease;
+    }
+
+    .sidebar a:hover,
+    .sidebar a:focus {
+      background: rgba(255,255,255,0.1);
+      outline: none;
+    }
+
+    .sidebar .tip {
+      margin-top: 24px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .content {
+      padding: 30px 32px 64px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f6fb5 0%, #144b9a 100%);
+      color: #fff;
+      padding: 30px;
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 2.1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0 0 14px;
+      max-width: 900px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+    }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section h2 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      color: #10233f;
+    }
+
+    .section-intro {
+      margin: 0 0 16px;
+      color: var(--muted);
+      max-width: 980px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.16rem;
+      color: #113050;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-2);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-right: 6px;
+      margin-bottom: 10px;
+    }
+
+    .formula {
+      background: #0f1f33;
+      color: #fff;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-family: "Courier New", monospace;
+      overflow-x: auto;
+      margin: 12px 0;
+      font-size: 0.97rem;
+    }
+
+    .steps {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    .steps li { margin-bottom: 8px; }
+
+    .example {
+      margin-top: 14px;
+      border: 1px solid #d7e7fb;
+      background: #f7fbff;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .example strong {
+      color: #113050;
+    }
+
+    .callout {
+      border-left: 5px solid var(--accent);
+      background: #f4f9ff;
+      padding: 14px 16px;
+      border-radius: 0 14px 14px 0;
+      color: #16395c;
+    }
+
+    .callout.warn {
+      border-left-color: #c2410c;
+      background: #fff7ed;
+      color: #7c2d12;
+    }
+
+    .callout.good {
+      border-left-color: #0f766e;
+      background: #ecfdf5;
+      color: #065f46;
+    }
+
+    .mini-list {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    details {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 800;
+      color: #10233f;
+    }
+
+    .practice-item {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .practice-item button,
+    .calc-panel button,
+    .top-btn {
+      cursor: pointer;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .practice-item button:hover,
+    .calc-panel button:hover,
+    .top-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .answer {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #eefcf7;
+      border: 1px solid #cdeee0;
+    }
+
+    .answer.show { display: block; }
+
+    .calc-panel {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .calc-panel h3 { margin-top: 0; }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .calc-panel label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #183252;
+    }
+
+    .calc-panel input,
+    .calc-panel select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid #cddbeb;
+      font-size: 0.98rem;
+      outline: none;
+    }
+
+    .result {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #f4f9ff;
+      border: 1px solid #d8e8fb;
+      font-weight: 700;
+      color: #0f3b68;
+      min-height: 50px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #eff6ff;
+      color: #10233f;
+    }
+
+    tr:nth-child(even) td { background: #fbfdff; }
+
+    .sticky-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+    }
+
+    .muted { color: var(--muted); }
+
+    .hidden-by-search { display: none !important; }
+
+    @media (max-width: 1100px) {
+      .page { grid-template-columns: 1fr; }
+      .sidebar {
+        position: relative;
+        height: auto;
+        overflow: visible;
+      }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 780px) {
+      .content { padding: 18px; }
+      .hero { padding: 22px; }
+      .hero h1 { font-size: 1.7rem; }
+      .grid-2, .grid-3, .grid-4, .calc-grid { grid-template-columns: 1fr; }
+      table { min-width: 620px; }
+    }
+
+    @media print {
+      .sidebar, .sticky-top, button { display: none !important; }
+      .page { display: block; }
+      .content { padding: 0; }
+      .card, .practice-item, details, .calc-panel, .hero { box-shadow: none; }
+      body { background: #fff; }
+    }
+  </style>
 </head>
 <body>
-  <header class="mobile-bar">
-    <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">☰ Topics</button>
-    <div class="mobile-title">NCLEX Dose Calculations</div>
-  </header>
-
-  <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
-
   <div class="page">
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar">
       <div class="brand">
         NCLEX Dose Calculations
         <small>RN + PN Study Page</small>
@@ -48,7 +469,7 @@
 
     <main class="content">
       <section class="hero searchable">
-        <h1>Master NCLEX RN &amp; NCLEX PN Dose Calculations</h1>
+        <h1>GURJEET'S Master NCLEX RN &amp; PN Dose Calculations</h1>
         <p>
           This page teaches the major medication calculation types commonly tested in nursing school and used for NCLEX-style questions, including tablets, liquids, weight-based dosing, safe ranges, intravenous infusions, gravity flow rates, reconstitution, titration drips, unit-based infusions, and concentration problems.
         </p>
@@ -743,6 +1164,112 @@
     <button class="top-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Top</button>
   </div>
 
-  <script src="assets/js/script.js"></script>
+  <script>
+    function safeNumber(value) {
+      const n = parseFloat(value);
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function roundTo(num, decimals = 1) {
+      return Number(Math.round(num + 'e' + decimals) + 'e-' + decimals);
+    }
+
+    function calcDHQ() {
+      const desired = safeNumber(document.getElementById('desired').value);
+      const have = safeNumber(document.getElementById('have').value);
+      const quantity = safeNumber(document.getElementById('quantity').value);
+      const unit = document.getElementById('quantityUnit').value.trim() || 'units';
+      const result = document.getElementById('dhqResult');
+      if (!desired || !have || !quantity) {
+        result.textContent = 'Enter desired dose, dose on hand, and quantity.';
+        return;
+      }
+      const answer = (desired / have) * quantity;
+      result.textContent = `Answer: ${roundTo(answer, 2)} ${unit}`;
+    }
+
+    function calcMlHr() {
+      const volume = safeNumber(document.getElementById('ivVolume').value);
+      const hours = safeNumber(document.getElementById('ivHours').value);
+      const result = document.getElementById('mlhrResult');
+      if (!volume || !hours) {
+        result.textContent = 'Enter both volume and time.';
+        return;
+      }
+      result.textContent = `Answer: ${roundTo(volume / hours, 2)} mL/hr`;
+    }
+
+    function calcGtt() {
+      const volume = safeNumber(document.getElementById('gttVolume').value);
+      const factor = safeNumber(document.getElementById('dropFactor').value);
+      const hours = safeNumber(document.getElementById('gttHours').value) || 0;
+      const minutes = safeNumber(document.getElementById('gttMinutes').value) || 0;
+      const totalMinutes = (hours * 60) + minutes;
+      const result = document.getElementById('gttResult');
+      if (!volume || !factor || !totalMinutes) {
+        result.textContent = 'Enter volume, drop factor, and a valid infusion time.';
+        return;
+      }
+      const answer = Math.round((volume * factor) / totalMinutes);
+      result.textContent = `Answer: ${answer} gtt/min`;
+    }
+
+    function calcMgKg() {
+      const kg = safeNumber(document.getElementById('kgWeight').value);
+      const dose = safeNumber(document.getElementById('mgkg').value);
+      const result = document.getElementById('mgkgResult');
+      if (!kg || !dose) {
+        result.textContent = 'Enter weight and ordered mg/kg/dose.';
+        return;
+      }
+      result.textContent = `Answer: ${roundTo(kg * dose, 2)} mg per dose`;
+    }
+
+    function calcTitration() {
+      const wt = safeNumber(document.getElementById('tWt').value);
+      const dose = safeNumber(document.getElementById('tDose').value);
+      const bagDrug = safeNumber(document.getElementById('bagDrug').value);
+      const bagVolume = safeNumber(document.getElementById('bagVolume').value);
+      const result = document.getElementById('titrationResult');
+      if (!wt || !dose || !bagDrug || !bagVolume) {
+        result.textContent = 'Enter all four values.';
+        return;
+      }
+      const mcgPerHr = dose * wt * 60;
+      const concentration = (bagDrug * 1000) / bagVolume;
+      const mlhr = mcgPerHr / concentration;
+      result.textContent = `Answer: ${roundTo(mlhr, 2)} mL/hr`;
+    }
+
+    function calcSafeRange() {
+      const kg = safeNumber(document.getElementById('safeKg').value);
+      const low = safeNumber(document.getElementById('safeLow').value);
+      const high = safeNumber(document.getElementById('safeHigh').value);
+      const ordered = safeNumber(document.getElementById('orderedDose').value);
+      const result = document.getElementById('safeResult');
+      if (!kg || !low || !high || !ordered) {
+        result.textContent = 'Enter weight, low dose, high dose, and ordered dose.';
+        return;
+      }
+      const min = kg * low;
+      const max = kg * high;
+      const safety = ordered >= min && ordered <= max ? 'SAFE' : 'NOT SAFE';
+      result.textContent = `Safe range: ${roundTo(min, 2)} mg to ${roundTo(max, 2)} mg. Ordered dose is ${safety}.`;
+    }
+
+    function toggleAnswer(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle('show');
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const term = this.value.trim().toLowerCase();
+      const blocks = document.querySelectorAll('.searchable, .card, .practice-item, .calc-panel, details');
+      blocks.forEach(block => {
+        const text = block.innerText.toLowerCase();
+        block.classList.toggle('hidden-by-search', term && !text.includes(term));
+      });
+    });
+  </script>
 </body>
 </html>
