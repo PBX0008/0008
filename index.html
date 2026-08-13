@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lightbulb Graphic</title>
-    <!-- Google Font matching the cursive script in the image -->
+    <title>Floating Space Lightbulb</title>
+    <!-- Cursive script font matching the photo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
@@ -17,86 +17,105 @@
         }
 
         body {
-            /* Background changed to Light Blue as requested */
-            background-color: #87CEEB; 
+            /* Changed wall color to Light Blue */
+            background-color: #74b9ff;
+            height: 100vh;
+            width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             overflow: hidden;
             font-family: 'Caveat', cursive;
+            position: relative;
         }
 
-        .container {
-            width: 100%;
-            max-width: 600px;
-            padding: 20px;
+        /* Container keeping bulb strictly centered */
+        .stage {
+            position: relative;
+            width: 800px;
+            height: 800px;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
-        svg {
-            width: 100%;
-            height: auto;
+        /* Static Lightbulb SVG */
+        .static-bulb {
+            position: absolute;
+            width: 550px;
+            height: 750px;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        /* Text Styles */
-        .script-text {
-            font-family: 'Caveat', cursive;
-            fill: #FFFFFF;
-            font-size: 38px;
-            text-anchor: middle;
-            dominant-baseline: middle;
-        }
-
-        /* SVG Line Styles */
         .white-stroke {
             stroke: #FFFFFF;
             fill: none;
             stroke-linecap: round;
             stroke-linejoin: round;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1));
+        }
+
+        /* Floating Zero-G Space Container */
+        .space-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* Common styles for floating text & arrows */
+        .floating-element {
+            position: absolute;
+            color: #FFFFFF;
+            fill: #FFFFFF;
+            font-size: 42px;
+            user-select: none;
+            will-change: transform;
+            text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Space particle motes */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <svg viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg">
-            
-            <!-- ================= LIGHTBULB RAYS ================= -->
+    <div class="stage">
+        
+        <!-- STATIC LIGHTBULB (CENTERED) -->
+        <svg class="static-bulb" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg">
+            <!-- Lightbulb Rays -->
             <g class="white-stroke" stroke-width="12">
-                <!-- Top-left rays -->
                 <line x1="140" y1="190" x2="100" y2="155" />
                 <line x1="225" y1="115" x2="200" y2="60" />
-                
-                <!-- Top ray -->
                 <line x1="318" y1="90"  x2="318" y2="30" />
-                
-                <!-- Top-right rays -->
                 <line x1="410" y1="115" x2="435" y2="60" />
                 <line x1="495" y1="190" x2="535" y2="155" />
-                
-                <!-- Middle-right rays -->
                 <line x1="525" y1="285" x2="575" y2="285" />
                 <line x1="505" y1="380" x2="555" y2="400" />
+                <line x1="110" y1="285" x2="60"  y2="285" />
+                <line x1="130" y1="380" x2="80"  y2="405" />
             </g>
 
-            <!-- Left middle ray -->
-            <line x1="110" y1="285" x2="60" y2="285" class="white-stroke" stroke-width="12" />
-            <line x1="130" y1="380" x2="80" y2="405" class="white-stroke" stroke-width="12" />
-
-            <!-- ================= LIGHTBULB OUTLINE ================= -->
-            <!-- Glass Outline -->
+            <!-- Main Bulb Glass Frame -->
             <path d="M 210,470 
                      C 120,440 100,280 200,180 
                      C 270,110 365,110 435,180 
                      C 535,280 515,440 425,470" 
                   class="white-stroke" stroke-width="12" />
 
-            <!-- Filament Inner Lines -->
+            <!-- Filament Wire & Loops -->
             <path d="M 260,470 L 300,310 M 375,470 L 335,310" class="white-stroke" stroke-width="7" />
-            
-            <!-- Filament Loops -->
             <path d="M 300,310 
                      C 280,260 290,240 305,250 
                      C 320,260 300,310 315,310 
@@ -104,50 +123,120 @@
                      C 340,240 350,260 335,310" 
                   class="white-stroke" stroke-width="7" />
 
-            <!-- Screw Base (Bulb Base) -->
+            <!-- Bulb Base Threading -->
             <g class="white-stroke" stroke-width="10">
                 <line x1="240" y1="495" x2="395" y2="495" />
                 <line x1="240" y1="520" x2="395" y2="520" />
                 <line x1="240" y1="545" x2="395" y2="545" />
             </g>
 
-            <!-- Bottom Contact Cap -->
+            <!-- Screw Cap Base -->
             <path d="M 250,565 C 250,610 385,610 385,565 Z" fill="#FFFFFF" />
-
-            <!-- ================= TEXT & ARROWS ================= -->
-
-            <!-- 1. "enlighten" (Top Right) -->
-            <text x="530" y="70" class="script-text">enlighten</text>
-            <!-- Curved Arrow pointing down-left -->
-            <path d="M 480,75 C 470,85 465,85 460,95" class="white-stroke" stroke-width="4" />
-            <path d="M 460,95 L 468,90 M 460,95 L 463,85" class="white-stroke" stroke-width="4" />
-
-            <!-- 2. "aspire" (Inside Left) -->
-            <text x="210" y="275" class="script-text">aspire</text>
-            <!-- Arrow pointing down-right -->
-            <path d="M 225,295 C 240,310 250,315 260,320" class="white-stroke" stroke-width="4" />
-            <path d="M 260,320 L 250,318 M 260,320 L 257,310" class="white-stroke" stroke-width="4" />
-
-            <!-- 3. "achieve" (Inside Top) -->
-            <text x="335" y="240" class="script-text">achieve</text>
-            <!-- Arrow pointing down -->
-            <path d="M 335,260 L 335,285" class="white-stroke" stroke-width="4" />
-            <path d="M 335,285 L 328,275 M 335,285 L 342,275" class="white-stroke" stroke-width="4" />
-
-            <!-- 4. "grow" (Inside Right) -->
-            <text x="430" y="295" class="script-text">grow</text>
-            <!-- Arrow pointing down-left -->
-            <path d="M 420,315 C 405,330 395,335 388,340" class="white-stroke" stroke-width="4" />
-            <path d="M 388,340 L 398,340 M 388,340 L 392,330" class="white-stroke" stroke-width="4" />
-
-            <!-- 5. "employees" (Bottom Right) -->
-            <text x="515" y="605" class="script-text">employees</text>
-            <!-- Arrow pointing from bottom-left to text -->
-            <path d="M 395,580 C 415,600 425,605 435,610" class="white-stroke" stroke-width="4" />
-            <path d="M 435,610 L 425,608 M 435,610 L 428,600" class="white-stroke" stroke-width="4" />
-
         </svg>
+
+        <!-- FLOATING ZERO-GRAVITY SPACE LAYER -->
+        <div class="space-layer" id="spaceLayer">
+            
+            <!-- 1. "enlighten" & Arrow -->
+            <div class="floating-element" style="top: 8%; left: 70%;">
+                enlighten
+                <svg width="40" height="40" viewBox="0 0 40 40" style="display:block;">
+                    <path d="M 30,5 C 20,15 15,15 10,25 M 10,25 L 18,20 M 10,25 L 13,15" class="white-stroke" stroke-width="3" />
+                </svg>
+            </div>
+
+            <!-- 2. "aspire" & Arrow -->
+            <div class="floating-element" style="top: 38%; left: 28%;">
+                aspire
+                <svg width="40" height="40" viewBox="0 0 40 40" style="display:block;">
+                    <path d="M 5,5 C 20,20 30,25 35,30 M 35,30 L 25,28 M 35,30 L 32,20" class="white-stroke" stroke-width="3" />
+                </svg>
+            </div>
+
+            <!-- 3. "achieve" & Arrow -->
+            <div class="floating-element" style="top: 28%; left: 45%;">
+                achieve
+                <svg width="30" height="40" viewBox="0 0 30 40" style="display:block; margin: auto;">
+                    <path d="M 15,5 L 15,30 M 15,30 L 8,20 M 15,30 L 22,20" class="white-stroke" stroke-width="3" />
+                </svg>
+            </div>
+
+            <!-- 4. "grow" & Arrow -->
+            <div class="floating-element" style="top: 40%; left: 60%;">
+                grow
+                <svg width="40" height="40" viewBox="0 0 40 40" style="display:block;">
+                    <path d="M 35,5 C 20,20 10,25 3,30 M 3,30 L 13,30 M 3,30 L 7,20" class="white-stroke" stroke-width="3" />
+                </svg>
+            </div>
+
+            <!-- 5. "employees" & Arrow -->
+            <div class="floating-element" style="top: 75%; left: 65%;">
+                <svg width="50" height="30" viewBox="0 0 50 30" style="display:inline-block; vertical-align: middle;">
+                    <path d="M 5,5 C 25,25 35,28 45,28 M 45,28 L 35,24 M 45,28 L 38,18" class="white-stroke" stroke-width="3" />
+                </svg>
+                employees
+            </div>
+
+        </div>
     </div>
 
+    <!-- ZERO-G SPACE MOTION ANIMATION SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const floatables = document.querySelectorAll('.floating-element');
+            const spaceLayer = document.getElementById('spaceLayer');
+
+            // 1. Create floating cosmic dust particles
+            for (let i = 0; i < 35; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 6 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                spaceLayer.appendChild(particle);
+
+                // Add physics properties to particles
+                animateZeroG(particle, {
+                    x: (Math.random() - 0.5) * 80,
+                    y: (Math.random() - 0.5) * 80,
+                    rot: 0,
+                    speed: Math.random() * 0.0005 + 0.0002,
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+
+            // 2. Animate all text items with realistic drift/rotation
+            floatables.forEach((el) => {
+                animateZeroG(el, {
+                    x: (Math.random() - 0.5) * 120,
+                    y: (Math.random() - 0.5) * 120,
+                    rot: (Math.random() - 0.5) * 25,
+                    speed: Math.random() * 0.0008 + 0.0004,
+                    phase: Math.random() * Math.PI * 2
+                });
+            });
+
+            // Smooth floating motion loop
+            function animateZeroG(element, physics) {
+                function update(time) {
+                    const t = time * physics.speed + physics.phase;
+                    
+                    // Smooth sinusoidal orbital floating (Zero-G)
+                    const currentX = Math.sin(t) * physics.x;
+                    const currentY = Math.cos(t * 0.8) * physics.y;
+                    const currentRot = Math.sin(t * 0.5) * physics.rot;
+
+                    element.style.transform = `translate3d(${currentX}px, ${currentY}px, 0px) rotate(${currentRot}deg)`;
+                    
+                    requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+            }
+        });
+    </script>
 </body>
 </html>
