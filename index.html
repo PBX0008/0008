@@ -27,12 +27,10 @@
             font-family: 'Caveat', cursive;
         }
 
-        /* SVG scale container ensuring perfect fit on all mobile screens */
+        /* Container keeping graphic centered and fully visible */
         .svg-container {
             width: 100vw;
             height: 100vh;
-            max-width: 100%;
-            max-height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -41,7 +39,7 @@
         svg {
             width: 100%;
             height: 100%;
-            max-height: 95vh;
+            max-height: 90vh;
             object-fit: contain;
         }
 
@@ -55,13 +53,17 @@
         .script-text {
             font-family: 'Caveat', cursive;
             fill: #FFFFFF;
-            font-size: 34px;
+            font-size: 28px; /* Slightly reduced font size for mobile clearance */
             text-anchor: middle;
             dominant-baseline: middle;
             user-select: none;
         }
 
-        /* Floating motion class */
+        .script-text-lg {
+            font-size: 32px;
+        }
+
+        /* Floating motion styling */
         .floating-group {
             will-change: transform;
         }
@@ -70,11 +72,11 @@
 <body>
 
     <div class="svg-container">
-        <!-- Main viewBox designed for portrait mobile layout -->
+        <!-- SVG viewBox centered and wide enough to prevent crowding -->
         <svg viewBox="0 0 600 850" xmlns="http://www.w3.org/2000/svg">
             
-            <!-- ================= STATIC LIGHTBULB (CENTERED) ================= -->
-            <!-- Bulb Rays -->
+            <!-- ================= STATIC LIGHTBULB ================= -->
+            <!-- Rays -->
             <g class="white-stroke" stroke-width="12">
                 <line x1="140" y1="210" x2="100" y2="175" />
                 <line x1="225" y1="135" x2="200" y2="80" />
@@ -94,15 +96,15 @@
                      C 510,300 490,460 400,490" 
                   class="white-stroke" stroke-width="12" />
 
-            <!-- Filament Inner Lines -->
-            <path d="M 250,490 L 285,330 M 350,490 L 315,330" class="white-stroke" stroke-width="7" />
+            <!-- Filament Lines -->
+            <path d="M 250,490 L 285,350 M 350,490 L 315,350" class="white-stroke" stroke-width="7" />
             
             <!-- Filament Loops -->
-            <path d="M 285,330 
-                     C 268,280 278,260 290,270 
-                     C 302,280 285,330 300,330 
-                     C 315,330 298,280 310,270 
-                     C 322,260 332,280 315,330" 
+            <path d="M 285,350 
+                     C 268,300 278,280 290,290 
+                     C 302,300 285,350 300,350 
+                     C 315,350 298,300 310,290 
+                     C 322,280 332,300 315,350" 
                   class="white-stroke" stroke-width="7" />
 
             <!-- Base Threads -->
@@ -112,68 +114,68 @@
                 <line x1="225" y1="565" x2="375" y2="565" />
             </g>
 
-            <!-- Bottom Base Cap -->
+            <!-- Base Cap -->
             <path d="M 235,585 C 235,630 365,630 365,585 Z" fill="#FFFFFF" />
 
 
-            <!-- ================= FLOATING TEXT & ARROWS ================= -->
+            <!-- ================= CLEARANCE-ADJUSTED FLOATING TEXT & ARROWS ================= -->
             
-            <!-- 1. "enlighten" (Top Right) -->
-            <g class="floating-group" data-dx="15" data-dy="12" data-speed="0.0006">
-                <text x="490" y="80" class="script-text">enlighten</text>
-                <path d="M 445,90 C 435,100 430,105 425,115" class="white-stroke" stroke-width="4" />
-                <path d="M 425,115 L 433,110 M 425,115 L 428,105" class="white-stroke" stroke-width="4" />
+            <!-- 1. "enlighten" (Top Right Outside) -->
+            <g class="floating-group" data-dx="6" data-dy="6" data-speed="0.0006">
+                <text x="480" y="70" class="script-text script-text-lg">enlighten</text>
+                <path d="M 430,80 C 420,90 415,95 410,105" class="white-stroke" stroke-width="3.5" />
+                <path d="M 410,105 L 418,100 M 410,105 L 413,95" class="white-stroke" stroke-width="3.5" />
             </g>
 
-            <!-- 2. "aspire" (Inside Left) -->
-            <g class="floating-group" data-dx="12" data-dy="10" data-speed="0.0008">
-                <text x="180" y="280" class="script-text">aspire</text>
-                <path d="M 195,300 C 210,315 220,320 230,325" class="white-stroke" stroke-width="4" />
-                <path d="M 230,325 L 220,323 M 230,325 L 227,315" class="white-stroke" stroke-width="4" />
+            <!-- 2. "aspire" (Inside Left - Clears Wall and Filament) -->
+            <g class="floating-group" data-dx="5" data-dy="5" data-speed="0.0008">
+                <text x="210" y="270" class="script-text">aspire</text>
+                <path d="M 220,285 C 230,295 238,300 245,305" class="white-stroke" stroke-width="3.5" />
+                <path d="M 245,305 L 236,303 M 245,305 L 241,296" class="white-stroke" stroke-width="3.5" />
             </g>
 
-            <!-- 3. "achieve" (Inside Top) -->
-            <g class="floating-group" data-dx="10" data-dy="14" data-speed="0.0005">
-                <text x="300" y="215" class="script-text">achieve</text>
-                <path d="M 300,232 L 300,255" class="white-stroke" stroke-width="4" />
-                <path d="M 300,255 L 293,245 M 300,255 L 307,245" class="white-stroke" stroke-width="4" />
+            <!-- 3. "achieve" (Inside Top - Centered High Above Loops) -->
+            <g class="floating-group" data-dx="4" data-dy="6" data-speed="0.0005">
+                <text x="300" y="200" class="script-text">achieve</text>
+                <path d="M 300,215 L 300,235" class="white-stroke" stroke-width="3.5" />
+                <path d="M 300,235 L 294,226 M 300,235 L 306,226" class="white-stroke" stroke-width="3.5" />
             </g>
 
-            <!-- 4. "grow" (Inside Right) -->
-            <g class="floating-group" data-dx="12" data-dy="12" data-speed="0.0007">
-                <text x="410" y="300" class="script-text">grow</text>
-                <path d="M 395,320 C 380,335 370,340 363,345" class="white-stroke" stroke-width="4" />
-                <path d="M 363,345 L 373,345 M 363,345 L 367,335" class="white-stroke" stroke-width="4" />
+            <!-- 4. "grow" (Inside Right - Clears Wall and Filament) -->
+            <g class="floating-group" data-dx="5" data-dy="5" data-speed="0.0007">
+                <text x="390" y="290" class="script-text">grow</text>
+                <path d="M 378,305 C 368,318 360,323 355,327" class="white-stroke" stroke-width="3.5" />
+                <path d="M 355,327 L 364,325 M 355,327 L 358,317" class="white-stroke" stroke-width="3.5" />
             </g>
 
-            <!-- 5. "employees" (Bottom Right) -->
-            <g class="floating-group" data-dx="14" data-dy="10" data-speed="0.0006">
-                <text x="480" y="630" class="script-text">employees</text>
-                <path d="M 375,600 C 395,620 405,625 415,630" class="white-stroke" stroke-width="4" />
-                <path d="M 415,630 L 405,628 M 415,630 L 408,620" class="white-stroke" stroke-width="4" />
+            <!-- 5. "employees" (Bottom Right Outside) -->
+            <g class="floating-group" data-dx="6" data-dy="5" data-speed="0.0006">
+                <text x="475" y="650" class="script-text script-text-lg">employees</text>
+                <path d="M 380,605 C 395,620 405,628 412,633" class="white-stroke" stroke-width="3.5" />
+                <path d="M 412,633 L 402,631 M 412,633 L 406,624" class="white-stroke" stroke-width="3.5" />
             </g>
 
         </svg>
     </div>
 
-    <!-- SMOOTH ZERO-G MOTION SCRIPT -->
+    <!-- ZERO-G MOTION SCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const floatGroups = document.querySelectorAll('.floating-group');
 
             floatGroups.forEach((group, index) => {
-                const maxDx = parseFloat(group.getAttribute('data-dx')) || 12;
-                const maxDy = parseFloat(group.getAttribute('data-dy')) || 12;
+                const maxDx = parseFloat(group.getAttribute('data-dx')) || 5;
+                const maxDy = parseFloat(group.getAttribute('data-dy')) || 5;
                 const speed = parseFloat(group.getAttribute('data-speed')) || 0.0006;
-                const phase = index * 1.5; // Offset start times for independent floating
+                const phase = index * 1.5;
 
                 function animate(time) {
                     const t = time * speed + phase;
                     
-                    // Controlled zero-g floating motion without overlapping bulb paths
+                    // Tight float animation preventing any collisions
                     const translateX = Math.sin(t) * maxDx;
                     const translateY = Math.cos(t * 0.85) * maxDy;
-                    const rotate = Math.sin(t * 0.5) * 4; // Very subtle tilt
+                    const rotate = Math.sin(t * 0.5) * 2;
 
                     group.setAttribute('transform', `translate(${translateX}, ${translateY}) rotate(${rotate})`);
                     
